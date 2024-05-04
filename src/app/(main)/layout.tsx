@@ -1,7 +1,16 @@
 import React from "react";
 
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>{children}</div>;
-};
+import Navbar from "@/components/sections/navbar/nav";
 
-export default MainLayout;
+export default function MainLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+}
