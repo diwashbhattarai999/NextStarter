@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Template - NextStarter
+
+![Next.js](https://img.shields.io/badge/Next.js-14-green)
+![NextAuth](https://img.shields.io/badge/NextAuth-v5-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0-blueviolet)
+![ESLint](https://img.shields.io/badge/ESLint-Configured-yellow)
+![Prettier](https://img.shields.io/badge/Prettier-Configured-lightgrey)
+![Commitlint](https://img.shields.io/badge/Commitlint-Configured-orange)
+![Husky](https://img.shields.io/badge/Husky-Configured-red)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Configured-success)
+
+Kickstart your Next.js projects with this template featuring authentication using NextAuth v5, Tailwind CSS for styling, and the latest Next.js 14. It comes pre-configured with ESLint, Prettier, Commitlint and Husky for a solid development setup. Perfect for modern, secure web applications.
+
+> **Warning**
+> This app is a work in progress
+
+## Features
+
+- Typescript for type-safety
+- Authentication with NextAuth v5
+- Tailwind CSS for styling
+- ESLint for code linting
+- Prettier for code formatting
+- Commitlint for commit message linting
+- Husky for pre-commit and commit-msg hooks
+- Internationalization with next-intl (Optional)
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+git clone git@github.com:diwashbhattarai999/NextStarter.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies using pnpm:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Copy `.env.example` to `.env.local` or `.env` and update the variables.
 
-## Learn More
+```sh
+cp .env.example .env
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
