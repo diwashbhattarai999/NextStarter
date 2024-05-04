@@ -17,7 +17,13 @@ const Logo = ({ className }: ILogoProps) => {
           className
         )}
       >
-        <Image src="/DB-NextStarter.svg" alt="Logo" fill priority />
+        <Image
+          src="/DB-NextStarter.svg"
+          alt="Logo"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </Link>
       <Link
         href="/"
@@ -26,7 +32,13 @@ const Logo = ({ className }: ILogoProps) => {
           className
         )}
       >
-        <Image src="/favicon.png" alt="Logo" fill priority />
+        <Image
+          src="/favicon.png"
+          alt="Logo"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </Link>
     </>
   );

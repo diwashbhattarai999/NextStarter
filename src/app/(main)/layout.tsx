@@ -4,9 +4,9 @@ import Navbar from "@/components/sections/navbar/nav";
 
 export default function MainLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <>
       <Navbar />
