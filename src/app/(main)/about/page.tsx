@@ -1,9 +1,9 @@
 import MaxWidthContainer from "@/components/ui/max-width-container";
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <MaxWidthContainer>
-      <h1>Home Page</h1>
+      <h1>About Page</h1>
     </MaxWidthContainer>
   );
 }

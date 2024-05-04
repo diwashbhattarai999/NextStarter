@@ -10,7 +10,7 @@ export default function MainLayout({
   return (
     <>
       <Navbar />
-      {children}
+      <main className="my-8">{children}</main>
     </>
   );
 }
