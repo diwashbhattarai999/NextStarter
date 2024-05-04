@@ -95,8 +95,8 @@ const Footer = () => {
         {/* Bottom - Copyright */}
         <div className="border-t border-t-border/70 flex items-center justify-center text-center py-4 text-xs md:text-sm max-sm:flex-col max-sm:gap-2">
           <p>
-            Copyright &copy; 2024 MetaLogic. All Rights Reserved. Saptakhel,
-            Lalitpur
+            Copyright &copy; 2024 Diwash Bhattarai. All Rights Reserved.
+            Handigaun, Kathmandu
           </p>
         </div>
       </MaxWidthContainer>
