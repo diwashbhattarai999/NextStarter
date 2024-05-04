@@ -45,7 +45,7 @@ const MobileNav = () => {
       {/* Menu */}
       <div
         className={cn(
-          "fixed inset-0 w-full h-screen bg-foreground/40 backdrop-blur-sm border-l border-border shadow-md z-30 duration-500 pointer-events-none",
+          "fixed inset-0 w-full h-screen bg-foreground/40 dark:bg-foreground/5 backdrop-blur-sm border-l border-border shadow-md z-30 duration-500 pointer-events-none hidden md:block",
           showMenu ? "opacity-100" : "opacity-0"
         )}
       ></div>

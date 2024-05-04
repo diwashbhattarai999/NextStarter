@@ -8,6 +8,8 @@ import { siteConfig } from "@/configs";
 
 import { cn } from "@/lib/utils";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 import "@/styles/globals.css";
 
 const nunito = Nunito({
@@ -24,16 +26,23 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "antialiased flex flex-col min-h-screen bg-background text-foreground",
           nunito.className
         )}
       >
-        {children}
-        <Toaster richColors={true} position="top-center" />
-        <NextTopLoader showSpinner={false} />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster richColors={true} position="top-center" />
+          <NextTopLoader showSpinner={false} />
+        </ThemeProvider>
       </body>
     </html>
   );

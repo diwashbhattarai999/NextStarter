@@ -23,7 +23,7 @@ const Navbar = () => {
   const user = null;
 
   return (
-    <div className="py-2 sm:py-5 border-b border-border/50">
+    <div className="py-3 sm:py-5 border-b border-border/50">
       <MaxWidthContainer className="flex items-center justify-between gap-8">
         {/* Logo */}
         <Logo />
@@ -43,7 +43,7 @@ const Navbar = () => {
                   <Link
                     href={link.path}
                     className={cn(
-                      "font-medium whitespace-nowrap z-50 transition-colors",
+                      "font-medium text-base whitespace-nowrap z-50 transition-colors",
                       activeLink === link.path
                         ? "text-primary-foreground"
                         : "text-primary"
@@ -82,7 +82,7 @@ const Navbar = () => {
                   <Link href={"/login"}>
                     <Button
                       variant={"default"}
-                      className="rounded-full px-12 hover:rounded-md"
+                      className="rounded-full px-12 hover:rounded-md font-semibold text-base"
                     >
                       Signin
                     </Button>

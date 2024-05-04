@@ -1,11 +1,11 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { getBaseUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: BASE_URL || "https://localhost:3000",
+      url: `${getBaseUrl()}/`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
