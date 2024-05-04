@@ -1,0 +1,10 @@
+#Ignore artifacts:
+.next/
+dist
+node_modules
+build
+
+#Ignore specific files
+.contentlayer
+pnpm-lock.yaml
+package-lock.json
