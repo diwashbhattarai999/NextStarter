@@ -11,7 +11,6 @@ import CardWrapper from "@/components/auth/card-wrapper";
 
 const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>();
-  // eslint-disable-next-line
   const [success, setSuccess] = useState<string | undefined>();
 
   const searchParams = useSearchParams();
