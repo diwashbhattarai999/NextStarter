@@ -30,6 +30,7 @@ const RegisterForm = () => {
   const {
     register: reg,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -41,10 +42,17 @@ const RegisterForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      register(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
-      });
+      register(values)
+        .then((data) => {
+          if (data?.error) {
+            setError(data?.error);
+          }
+          if (data?.success) {
+            reset();
+            setSuccess(data?.success);
+          }
+        })
+        .catch(() => setError("Something went wrong"));
     });
   };
 
