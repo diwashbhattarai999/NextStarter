@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
+import { newVerification } from "@/actions/auth/new-verification";
+
 import FormError from "@/components/ui/form-error";
 import FormSuccess from "@/components/ui/form-success";
 import CardWrapper from "@/components/auth/card-wrapper";
@@ -23,7 +25,14 @@ const NewVerificationForm = () => {
       return;
     }
 
-    // TODO: call new-verification action
+    newVerification(token)
+      .then((data) => {
+        setSuccess(data.success);
+        setError(data.error);
+      })
+      .catch(() => {
+        setError("Something went wrong!");
+      });
   }, [token, success, error]);
 
   useEffect(() => {

@@ -6,6 +6,7 @@ import { Mail } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 
+import { reset } from "@/actions/auth/reset";
 import { ResetSchema } from "@/schemas";
 
 import { Button } from "@/components/ui/button";
@@ -39,7 +40,10 @@ const ResetForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      console.log(values);
+      reset(values).then((data) => {
+        setError(data?.error);
+        setSuccess(data?.success);
+      });
     });
   };
 

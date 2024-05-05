@@ -6,6 +6,7 @@ import { KeyRound, Mail, UserCircle } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 
+import { register } from "@/actions/auth/register";
 import { RegisterSchema } from "@/schemas";
 
 import { Button } from "@/components/ui/button";
@@ -40,7 +41,10 @@ const RegisterForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      console.log(values);
+      register(values).then((data) => {
+        setError(data.error);
+        setSuccess(data.success);
+      });
     });
   };
 

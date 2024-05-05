@@ -6,6 +6,7 @@ import { KeyRound } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 
+import { newPassword } from "@/actions/auth/new-password";
 import { NewPasswordSchema } from "@/schemas";
 
 import { Button } from "@/components/ui/button";
@@ -37,7 +38,10 @@ const NewPasswordForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      console.log(values);
+      newPassword(values).then((data) => {
+        setError(data?.error);
+        setSuccess(data?.success);
+      });
     });
   };
 

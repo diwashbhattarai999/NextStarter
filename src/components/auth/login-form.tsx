@@ -2,11 +2,13 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Hash, KeyRound, Mail } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 
+import { login } from "@/actions/auth/login";
 import { LoginSchema } from "@/schemas";
 
 import { Button } from "@/components/ui/button";
@@ -21,15 +23,22 @@ const defaultValues = {
 };
 
 const LoginForm = () => {
-  // eslint-disable-next-line
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
+  const urlError =
+    searchParams.get("error") === "OAuthAccountNotLinked"
+      ? "Email already in use with different Provider!"
+      : "";
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -43,7 +52,20 @@ const LoginForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      console.log(values);
+      login(values, callbackUrl)
+        .then((data) => {
+          if (data?.error) {
+            setError(data?.error);
+          }
+          if (data?.success) {
+            reset();
+            setSuccess(data?.success);
+          }
+          if (data?.twoFactor) {
+            setShowTwoFactor(true);
+          }
+        })
+        .catch(() => setError("Something went wrong"));
     });
   };
 
@@ -110,7 +132,7 @@ const LoginForm = () => {
         {success && <FormSuccess message={success} />}
 
         {/* Error Message */}
-        {error && <FormError message={error} />}
+        {error && <FormError message={error || urlError} />}
 
         <Link
           href="/reset"
