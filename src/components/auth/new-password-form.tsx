@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyRound } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -24,6 +25,9 @@ const NewPasswordForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
+
   const {
     register,
     handleSubmit,
@@ -38,7 +42,7 @@ const NewPasswordForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      newPassword(values).then((data) => {
+      newPassword(values, token).then((data) => {
         setError(data?.error);
         setSuccess(data?.success);
       });
