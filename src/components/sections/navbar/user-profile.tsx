@@ -5,16 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { LogOut, LucideIcon, UserCircle2 } from "lucide-react";
 
+import { logout } from "@/actions/auth/logout";
+import { useCurrentUser } from "@/hooks/use-current-user";
+
 import { cn } from "@/lib/utils";
 
 const UserProfile = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const handleLogout = () => {
-    //TODO: call logout server-action
+  const handleLogout = async () => {
+    logout()
+      .then(() => {
+        //! IMPORTANT: This reload is only temporary solution
+        window.location.reload();
+      })
+      .catch((error) => console.log(error));
   };
 
-  const user = { image: null, email: "diwashb999@gmail.com" };
+  const user = useCurrentUser();
 
   const MENU_ITEMS: {
     label: string;

@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
 
@@ -11,6 +12,8 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import "@/styles/globals.css";
+
+import { auth } from "@/auth";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -25,6 +28,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -33,16 +38,18 @@ export default async function RootLayout({
           nunito.className
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster richColors={true} position="top-center" />
-          <NextTopLoader showSpinner={false} />
-        </ThemeProvider>
+        <SessionProvider session={session}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster richColors={true} position="top-center" />
+            <NextTopLoader showSpinner={false} />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

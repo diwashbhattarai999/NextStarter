@@ -1,6 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
 import * as z from "zod";
@@ -105,6 +104,4 @@ export const login = async (
 
     throw error;
   }
-
-  revalidatePath(callbackUrl || DEFAULT_LOGIN_REDIRECT);
 };

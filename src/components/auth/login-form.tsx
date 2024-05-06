@@ -65,6 +65,10 @@ const LoginForm = () => {
             setSuccess("Please check your email for 2FA code.");
             setShowTwoFactor(true);
           }
+          //! IMPORTANT: This reload is only temporary solution
+          if (!data?.error || !data.twoFactor) {
+            window.location.reload();
+          }
         })
         .catch(() => setError("Something went wrong"));
     });

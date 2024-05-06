@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { NAV_LINKS } from "@/constants";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ const Navbar = () => {
   const pathname = usePathname().split("/")[1];
   const [activeLink, setActiveLink] = useState(`/${pathname}`);
 
-  const user = null;
+  const user = useCurrentUser();
 
   return (
     <div className="py-3 sm:py-5 border-b border-border/50">
