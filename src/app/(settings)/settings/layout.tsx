@@ -1,13 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
-import { SETTINGS_OPTIONS } from "@/constants";
 import { auth } from "@/auth";
 
 import MaxWidthContainer from "@/components/ui/max-width-container";
-import Footer from "@/components/sections/footer/footer";
 import Navbar from "@/components/sections/navbar/nav";
+import SettingOptions from "@/components/sections/settings/setting-options";
 
 export default async function SettingsLayout({
   children,
@@ -24,7 +22,7 @@ export default async function SettingsLayout({
         <MaxWidthContainer className="max-w-[1350px]">
           <div className="flex flex-col justify-center gap-10">
             {/* Header - Image & Name */}
-            <div className="flex gap-4 items-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
               {/* Profile Image */}
               <Image
                 src={user?.image || "/images/default-profile.png"}
@@ -37,13 +35,13 @@ export default async function SettingsLayout({
 
               {/* Profile Info */}
               <div>
-                <div className="flex items-center gap-1">
+                <div className="flex flex-row items-center gap-1">
                   {/* Profile Name */}
                   <span className="text-2xl">{user?.name} </span>
 
                   {/* Profile username */}
                   <span className="text-xl text-muted-foreground">
-                    (@{user?.email?.split("@")[0]})
+                    ({user?.email?.split("@")[0]})
                   </span>
                 </div>
                 <div className="text-muted-foreground">
@@ -52,28 +50,22 @@ export default async function SettingsLayout({
               </div>
             </div>
 
-            <div className="hidden md:flex md:gap-4">
-              {/* Options */}
-              <div className="w-full md:basis-[25%] flex flex-col">
-                {SETTINGS_OPTIONS.map((option) => {
-                  return (
-                    <Link key={option.label} href={option.link}>
-                      <div className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-muted transition-all">
-                        <option.icon className="text-muted-foreground h-4 w-4 -mt-[2px]" />
-                        <span className="text-secondary-foreground">
-                          {option.label}
-                        </span>
-                      </div>
-                    </Link>
-                  );
-                })}
+            <div className="flex flex-col md:flex-row gap-10 md:gap-12 lg:gap-16 xl:gap-20">
+              <div className="w-full md:basis-[25%] flex flex-col gap-1">
+                <SettingOptions />
               </div>
+
               <div className="w-full md:basis-[75%]">{children}</div>
             </div>
           </div>
         </MaxWidthContainer>
       </main>
-      <Footer />
+      <div className="border-t border-t-border/70 flex items-center justify-center text-center py-4 text-xs md:text-sm max-sm:flex-col max-sm:gap-2">
+        <p>
+          Copyright &copy; 2024 Diwash Bhattarai. All Rights Reserved.
+          Handigaun, Kathmandu
+        </p>
+      </div>
     </div>
   );
 }

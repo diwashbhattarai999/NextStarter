@@ -55,7 +55,6 @@ const ConfirmationPopup = ({
 
         <div className="flex justify-end gap-4">
           <Button
-            variant={"destructive"}
             size={"lg"}
             onClick={() => {
               setShowConfirmation(false);
@@ -64,6 +63,7 @@ const ConfirmationPopup = ({
             {cancelButtonLabel}
           </Button>
           <Button
+            variant={"destructive"}
             size={"lg"}
             onClick={() => {
               handleSubmit();

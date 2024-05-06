@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client";
 import * as z from "zod";
 
 // Schema for login form validation
@@ -83,10 +84,11 @@ export const SettingsSchema = z
     image: z.optional(z.string()),
     name: z.optional(z.string()),
     isTwoFactorEnabled: z.optional(z.boolean()),
-    role: z.enum(["ADMIN", "USER"]),
+    role: z.enum([UserRole.ADMIN, UserRole.USER, UserRole.SUPER_ADMIN]),
     email: z.optional(z.string().email()),
     password: z.optional(z.string()),
     newPassword: z.optional(z.string()),
+    phone: z.optional(z.string()),
   })
   .refine(
     (data) => {

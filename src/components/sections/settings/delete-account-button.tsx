@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import FormError from "@/components/ui/form-error";
 import FormSuccess from "@/components/ui/form-success";
 
-import ConfirmationPopup from "./confirmation-popup";
+import ConfirmationPopup from "../../ui/confirmation-popup";
 
 const DeleteAccountButton = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
