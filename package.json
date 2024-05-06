@@ -9,7 +9,8 @@
     "lint": "eslint src --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext ts,tsx,js,jsx --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,html}'",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.0.0",
