@@ -11,15 +11,21 @@ import {
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
+  // get current url
   const { nextUrl } = req;
+
+  // check if logged in
   const isLoggedIn = !!req.auth;
 
+  // find the route is apiAuth or public or auth or admin
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
+  // if apiAuth do nothing
   if (isApiAuthRoute) return;
 
+  // if auth and loggedIn redirect to default redirect page e.g. "/"
   if (isAuthRoute) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
@@ -27,6 +33,7 @@ export default auth((req) => {
     return;
   }
 
+  // if not logged in and not public route , redirect to login ( with callback if available )
   if (!isLoggedIn && !isPublicRoute) {
     let callbackUrl = nextUrl.pathname;
     if (nextUrl.search) {

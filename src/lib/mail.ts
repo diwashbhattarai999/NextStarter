@@ -4,6 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const domain = process.env.NEXT_PUBLIC_BASE_URL;
 
+// Function to send password reset email
 export const sendPasswordResetEmail = async (email: string, token: string) => {
   const resetLink = `${domain}/new-password?token=${token}`;
 
@@ -24,6 +25,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
   });
 };
 
+// Function to send email verification email
 export const sendVerificationEmail = async (email: string, token: string) => {
   const confirmLink = `${domain}/new-verification?token=${token}`;
 
@@ -41,6 +43,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
   });
 };
 
+// Function to send two-factor authentication token email
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   await resend.emails.send({
     from: "onboarding@resend.dev",

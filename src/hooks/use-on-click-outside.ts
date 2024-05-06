@@ -15,6 +15,7 @@ const useOnClickOutside = (
     document.addEventListener("mousedown", listener);
     document.addEventListener("touchstart", listener);
 
+    // Cleanup: Remove event listeners when the component unmounts
     return () => {
       document.removeEventListener("mousedown", listener);
       document.removeEventListener("touchstart", listener);

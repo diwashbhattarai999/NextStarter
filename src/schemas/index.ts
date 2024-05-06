@@ -1,5 +1,6 @@
 import * as z from "zod";
 
+// Schema for login form validation
 export const LoginSchema = z.object({
   email: z
     .string()
@@ -16,6 +17,7 @@ export const LoginSchema = z.object({
   code: z.optional(z.string()),
 });
 
+// Schema for registration form validation
 export const RegisterSchema = z
   .object({
     name: z
@@ -61,18 +63,21 @@ export const RegisterSchema = z
     message: "Password don't match",
   });
 
+// Schema for resetting password
 export const ResetSchema = z.object({
   email: z.string().email({
     message: "Email is required",
   }),
 });
 
+// Schema for setting a new password
 export const NewPasswordSchema = z.object({
   password: z.string().min(6, {
     message: "Minimum 6 characters required!",
   }),
 });
 
+// Schema for user settings
 export const SettingsSchema = z
   .object({
     image: z.optional(z.string()),

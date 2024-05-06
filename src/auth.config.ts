@@ -20,12 +20,13 @@ export default {
     }),
     Credentials({
       async authorize(credentials) {
+        // Validate the incoming credentials using a schema
         const validatedFields = LoginSchema.safeParse(credentials);
 
         if (validatedFields.success) {
           const { email, password } = validatedFields.data;
-          const user = await getUserByEmail(email);
 
+          const user = await getUserByEmail(email);
           if (!user || !user.password) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
@@ -33,6 +34,7 @@ export default {
           if (passwordsMatch) return user;
         }
 
+        // If credentials are invalid or user not found, return null
         return null;
       },
     }),

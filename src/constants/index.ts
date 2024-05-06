@@ -1,5 +1,6 @@
 import { Laptop2, Mail, MapPin, Moon, Phone, Sun } from "lucide-react";
 
+// Navigation links for the header
 export const NAV_LINKS = [
   {
     label: "Home",
@@ -19,6 +20,7 @@ export const NAV_LINKS = [
   },
 ];
 
+// Themes with icons for theme switcher
 export const THEMES = [
   {
     label: "Light",
@@ -34,6 +36,7 @@ export const THEMES = [
   },
 ];
 
+// Footer information sections
 export const FOOTER_INFOS = [
   {
     title: "Company",
@@ -67,6 +70,7 @@ export const FOOTER_INFOS = [
   },
 ];
 
+// Footer contact information with icons
 export const FOOTER_CONTACTS = [
   { title: "diwashb999@gmail.com", link: "mailto:<EMAIL>", icon: Mail },
   { title: "+ 977 9863447740", link: "tel:+91 9876543210", icon: Phone },

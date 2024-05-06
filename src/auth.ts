@@ -11,10 +11,13 @@ import { db } from "@/lib/db";
 import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  // Define custom pages
   pages: {
     signIn: "/login",
     error: "/error",
   },
+
+  // Define custom events
   events: {
     async linkAccount({ user }) {
       await db.user.update({
@@ -24,6 +27,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
 
+  // Define custom callbacks
   callbacks: {
     async signIn({ user, account }) {
       // Allow OAuth without email verification
@@ -34,6 +38,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // Prevent sign in without email verification
       if (!existingUser?.emailVerified) return false;
 
+      // Handle two-factor authentication
       if (existingUser.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
           existingUser.id
@@ -50,14 +55,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return true;
     },
     async session({ token, session }) {
+      // Update session with user's ID and role
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
-
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
       }
 
+      // Update session with user's additional information
       if (session.user) {
         session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
         session.user.name = token.name;
@@ -68,14 +74,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
     async jwt({ token }) {
+      // Retrieve user information from the token
       if (!token.sub) return token;
 
       const existingUser = await getUserById(token.sub);
-
       if (!existingUser) return token;
 
       const existingAccount = await getAccountByUserId(existingUser.id);
 
+      // Update token with user information
       token.isOAuth = !!existingAccount;
       token.name = existingUser.name;
       token.email = existingUser.email;
