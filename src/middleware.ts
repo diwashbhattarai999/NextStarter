@@ -46,6 +46,11 @@ export default auth((req) => {
       new URL(`/login?callbackUrl=${encodedCallbackUrl}`, nextUrl)
     );
   }
+
+  // redirect to /settings/general if logged in and /settings
+  if (isLoggedIn && nextUrl.pathname === "/settings") {
+    return Response.redirect(new URL("/settings/general", nextUrl));
+  }
 });
 
 // Optionally, don't invoke Middleware on some paths

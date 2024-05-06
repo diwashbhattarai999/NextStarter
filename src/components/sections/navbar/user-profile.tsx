@@ -36,7 +36,7 @@ const UserProfile = () => {
       onClick: () => {
         setIsProfileOpen(false);
       },
-      link: "/user/settings",
+      link: "/settings",
     },
   ];
 
@@ -61,19 +61,19 @@ const UserProfile = () => {
       >
         <ul className="flex flex-col gap-2">
           <li>
-            <h3 className="px-2 py-3 font-medium rounded-md text-muted-foreground">
+            <span className="px-2 py-3 font-medium rounded-md text-muted-foreground">
               @{user?.email?.split("@")[0]}
-            </h3>
+            </span>
           </li>
 
-          <hr className="bg-border" />
+          <div className="bg-border h-[1px] w-full"></div>
 
           {MENU_ITEMS.map((item, index) => {
             return (
               <li
                 key={index}
                 onClick={item.onClick}
-                className="flex items-center gap-3 px-2 font-medium transition-colors rounded-md cursor-pointer hover:bg-muted border border-transparent hover:border-border"
+                className="flex items-center gap-3 px-2 font-medium transition-colors rounded-md cursor-pointer hover:bg-muted border border-transparent hover:border-border text-secondary-foreground"
               >
                 {item.link ? (
                   <Link href={item.link}>
@@ -94,7 +94,7 @@ const UserProfile = () => {
 
           <li
             onClick={handleLogout}
-            className="flex items-center gap-3 px-2 font-medium transition-colors rounded-md cursor-pointer hover:bg-muted border border-transparent hover:border-border"
+            className="flex items-center gap-3 px-2 font-medium transition-colors rounded-md cursor-pointer hover:bg-muted border border-transparent hover:border-border text-secondary-foreground"
           >
             <LogOut className="w-auto py-3 h-11" />
             <h3>Logout</h3>

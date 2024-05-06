@@ -1,4 +1,16 @@
-import { Laptop2, Mail, MapPin, Moon, Phone, Sun } from "lucide-react";
+import {
+  Bell,
+  Brush,
+  Laptop2,
+  Mail,
+  MapPin,
+  Moon,
+  Phone,
+  Sun,
+  Trash,
+  User,
+  Users,
+} from "lucide-react";
 
 // Navigation links for the header
 export const NAV_LINKS = [
@@ -75,4 +87,33 @@ export const FOOTER_CONTACTS = [
   { title: "diwashb999@gmail.com", link: "mailto:<EMAIL>", icon: Mail },
   { title: "+ 977 9863447740", link: "tel:+91 9876543210", icon: Phone },
   { title: "Rudramati Marg, Handigaun-05, Kathmandu", link: "/", icon: MapPin },
+];
+
+// Settings Options
+export const SETTINGS_OPTIONS = [
+  {
+    icon: User,
+    label: "General",
+    link: "general",
+  },
+  {
+    icon: Brush,
+    label: "Appearance",
+    link: "appearance",
+  },
+  {
+    icon: Users,
+    label: "Social Profiles",
+    link: "social-profiles",
+  },
+  {
+    icon: Bell,
+    label: "Notifications",
+    link: "notifications",
+  },
+  {
+    icon: Trash,
+    label: "Delete Account",
+    link: "delete-account",
+  },
 ];
