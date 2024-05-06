@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { signIn } from "next-auth/react";
+
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 import { Button } from "@/components/ui/button";
 
@@ -16,8 +19,11 @@ const AUTH_SOCIAL_LINKS = [
 ];
 
 const AuthSocial = ({ disabled }: { disabled?: boolean }) => {
-  // eslint-disable-next-line
-  const handleSocialLogin = (provider: "google" | "github") => {};
+  const handleSocialLogin = (provider: "google" | "github") => {
+    signIn(provider, {
+      callbackUrl: DEFAULT_LOGIN_REDIRECT,
+    });
+  };
 
   return (
     <div className="flex items-center justify-between w-full gap-2">
