@@ -62,6 +62,7 @@ const LoginForm = () => {
             setSuccess(data?.success);
           }
           if (data?.twoFactor) {
+            setSuccess("Please check your email for 2FA code.");
             setShowTwoFactor(true);
           }
         })
