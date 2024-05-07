@@ -38,6 +38,7 @@ const FooterInput = () => {
         size={"sm"}
         type="submit"
         className="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2"
+        aria-label="Subscribe to newsletter"
       >
         <ArrowRight className="w-7 h-7 cursor-pointer" />
       </Button>

@@ -94,7 +94,7 @@ const Navbar = () => {
                     href="https://github.com/diwashbhattarai999/NextStarter"
                     target="_blank"
                   >
-                    <Button variant={"ghost"} size={"icon"}>
+                    <Button variant={"ghost"} size={"icon"} aria-label="Github">
                       <Image
                         src={"/images/github.svg"}
                         width={30}

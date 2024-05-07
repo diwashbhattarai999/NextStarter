@@ -45,6 +45,7 @@ const AuthSocial = ({ disabled }: { disabled?: boolean }) => {
               width={25}
               height={25}
               priority
+              aria-hidden="true"
             />
             <span className="text-primary capitalize font-medium">
               {link.label}

@@ -22,7 +22,7 @@ const Footer = () => {
           {/* Left */}
           <div className="w-full md:basis-[60%] grid gap-4 sm:gap-2 lg:gap-8 grid-cols-1 min-[350px]:grid-cols-2 md:max-lg:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
             {FOOTER_INFOS.map((section, i) => (
-              <ul key={i} className={cn("flex flex-col gap-2")}>
+              <div key={i} className={cn("flex flex-col gap-2")}>
                 {/* Title */}
                 <h2 className="text-lg md:text-xl font-semibold mb-2 pb-2 pr-4 border-b border-border w-fit">
                   {section.title}
@@ -43,7 +43,7 @@ const Footer = () => {
                     </div>
                   </Link>
                 ))}
-              </ul>
+              </div>
             ))}
           </div>
 
@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
 
             {/* Contact links */}
-            <ul className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <h2 className="text-lg md:text-xl font-semibold mb-2 pb-2 pr-4 border-b border-border w-fit">
                 Contacts
               </h2>
@@ -85,7 +85,7 @@ const Footer = () => {
                   );
                 })}
               </div>
-            </ul>
+            </div>
           </div>
 
           {/* Theme switcher */}

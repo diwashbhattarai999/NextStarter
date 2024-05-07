@@ -59,18 +59,18 @@ const UserProfile = () => {
             : "opacity-0 -translate-y-5 pointer-events-none"
         )}
       >
-        <ul className="flex flex-col gap-2">
-          <li>
+        <div className="flex flex-col gap-2">
+          <div>
             <span className="px-2 py-3 font-medium rounded-md text-muted-foreground">
               @{user?.email?.split("@")[0]}
             </span>
-          </li>
+          </div>
 
           <div className="bg-border h-[1px] w-full"></div>
 
           {MENU_ITEMS.map((item, index) => {
             return (
-              <li
+              <div
                 key={index}
                 onClick={item.onClick}
                 className="flex items-center gap-3 px-2 font-medium transition-colors rounded-md cursor-pointer hover:bg-muted border border-transparent hover:border-border text-secondary-foreground"
@@ -88,18 +88,18 @@ const UserProfile = () => {
                     <h3>{item.label}</h3>
                   </div>
                 )}
-              </li>
+              </div>
             );
           })}
 
-          <li
+          <div
             onClick={handleLogout}
             className="flex items-center gap-3 px-2 font-medium transition-colors rounded-md cursor-pointer hover:bg-muted border border-transparent hover:border-border text-secondary-foreground"
           >
             <LogOut className="w-auto py-3 h-11" />
             <h3>Logout</h3>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

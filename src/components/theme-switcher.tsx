@@ -37,7 +37,12 @@ export default function ThemeSwitcher() {
 
   return (
     <div className="relative" ref={themeRef}>
-      <Button onClick={handleTheme} variant={"ghost"} className="p-2">
+      <Button
+        onClick={handleTheme}
+        variant={"ghost"}
+        className="p-2"
+        aria-label="Switch Theme"
+      >
         {theme === "dark" && isMounted ? (
           <MoonIcon size={22} />
         ) : (
