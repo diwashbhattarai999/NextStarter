@@ -18,7 +18,7 @@ const SettingOptions = () => {
             <div
               className={cn(
                 "flex items-center gap-2 pl-3 pr-2 py-[6px] rounded-md cursor-pointer hover:bg-muted transition-all relative",
-                pathname === `/settings/${option.link}` && "bg-muted"
+                { "bg-muted": pathname === `/settings/${option.link}` }
               )}
             >
               <option.icon className="text-muted-foreground h-4 w-4 -mt-[2px]" />

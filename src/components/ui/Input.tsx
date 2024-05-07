@@ -35,17 +35,16 @@ const Input = ({
 
   return (
     <div
-      className={cn(
-        "relative w-full mb-4 flex flex-col gap-2 items-start",
-        disabled && "cursor-not-allowed opacity-50"
-      )}
+      className={cn("relative w-full mb-4 flex flex-col gap-2 items-start", {
+        "cursor-not-allowed opacity-50": disabled,
+      })}
     >
       <label
         htmlFor={name}
         className={cn(
           "text-primary cursor-pointer",
-          error && "text-destructive opacity-80",
-          disabled && "cursor-not-allowed opacity-50"
+          { "text-destructive opacity-80": error },
+          { "cursor-not-allowed opacity-50": disabled }
         )}
       >
         {label}

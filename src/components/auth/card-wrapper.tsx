@@ -35,7 +35,7 @@ const CardWrapper = ({
     <div
       className={cn(
         "w-full min-h-screen flex items-center justify-center bg-background/70 backdrop-blur-md",
-        disabled && "cursor-not-allowed z-0",
+        { "cursor-not-allowed z-0": disabled },
         wrapperClassName
       )}
     >
@@ -56,10 +56,9 @@ const CardWrapper = ({
           </div>
         </div>
         <div
-          className={cn(
-            "w-full pb-4",
-            (showSocial || backButtonHref) && "border-b border-border"
-          )}
+          className={cn("w-full pb-4", {
+            "border-b border-border": showSocial || backButtonHref,
+          })}
         >
           {children}
         </div>
@@ -73,7 +72,7 @@ const CardWrapper = ({
             href={backButtonHref}
             className={cn(
               "text-secondary-foreground hover:text-muted-foreground text-sm border-b border-b-secondary-foreground/50",
-              disabled && "cursor-not-allowed opacity-50"
+              { "cursor-not-allowed opacity-50": disabled }
             )}
           >
             {backButtonLabel}

@@ -39,7 +39,7 @@ const Switch = ({
         error
           ? "border-destructive focus:border-destructive"
           : "border-input focus:border-secondary-foreground",
-        disabled && "cursor-not-allowed opacity-50"
+        { "cursor-not-allowed opacity-50": disabled }
       )}
     >
       <div className="flex flex-col items-start justify-start gap-1 text-left flex-1">
@@ -51,7 +51,7 @@ const Switch = ({
       <div
         className={cn(
           "w-10 h-6 flex items-center bg-foreground/30 rounded-full cursor-pointer shadow-inner",
-          toggleSwitch && "bg-foreground/20"
+          { "bg-foreground/20": toggleSwitch }
         )}
         onClick={handleSwitch}
       >

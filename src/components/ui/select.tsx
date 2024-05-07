@@ -51,17 +51,16 @@ const Select = ({
 
   return (
     <div
-      className={cn(
-        "w-full relative mb-8 flex flex-col items-start gap-2 ",
-        disabled && "cursor-not-allowed opacity-50"
-      )}
+      className={cn("w-full relative mb-8 flex flex-col items-start gap-2 ", {
+        "cursor-not-allowed opacity-50": disabled,
+      })}
     >
       <label
         htmlFor="SelectRole"
         className={cn(
           "text-primary cursor-pointer ",
-          error && "text-destructive opacity-80",
-          disabled && "cursor-not-allowed opacity-50"
+          { "text-destructive opacity-80": error },
+          { "cursor-not-allowed opacity-50": disabled }
         )}
       >
         {selectLabel}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,44 +31,29 @@ const Navbar = () => {
 
         {/* Nav Links */}
         <div className="flex items-center gap-2 lg:gap-4 xl:gap-8 justify-center">
-          <div className="hidden xl:flex items-center gap-2 p-1 rounded-full relative">
+          <div className="hidden lg:flex items-center gap-10 rounded-full relative">
             {/* Links */}
             {NAV_LINKS.map((link) => {
               return (
-                <div
+                <Link
                   key={link.path}
-                  className="w-20 text-center py-1"
                   onMouseEnter={() => setActiveLink(link.path)}
                   onMouseLeave={() => setActiveLink(`/${pathname}`)}
+                  href={link.path}
+                  className={cn(
+                    "font-medium text-base whitespace-nowrap z-50 after:block after:content-[''] after:h-[3px] after:w-[85%] after:bg-primary after:scale-x-0 after:transition-transform after:duration-500 hover:after:scale-x-125 after:origin-[0%_50%]",
+                    {
+                      "after:scale-x-125": activeLink === link.path,
+                    }
+                  )}
                 >
-                  <Link
-                    href={link.path}
-                    className={cn(
-                      "font-medium text-base whitespace-nowrap z-50 transition-colors",
-                      activeLink === link.path
-                        ? "text-primary-foreground"
-                        : "text-primary"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                </div>
+                  {link.label}
+                </Link>
               );
             })}
-
-            {/* Hover effect background */}
-            <div
-              className={cn(
-                "absolute left-0 top-1/2 -translate-y-1/2  h-[36px] w-[90px] bg-primary rounded-full transition-transform duration-300 -z-10 hidden",
-                activeLink === "/" && "-translate-x-0 block",
-                activeLink === "/about" && "translate-x-[5.4rem] block",
-                activeLink === "/blog" && "translate-x-[10.8rem] block",
-                activeLink === "/contact" && "translate-x-[16.4rem] block"
-              )}
-            />
           </div>
 
-          <div className="max-sm:hidden">
+          <div className="max-sm:hidden ml-8">
             {user ? (
               <>
                 {/* Show if user is logged in */}
