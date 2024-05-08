@@ -44,7 +44,7 @@ Kickstart your Next.js projects with this template featuring authentication usin
 1. Clone the repository:
 
 ```sh
-git clone git@github.com:diwashbhattarai999/NextStarter.git
+pnpm create next-app --example "https://github.com/diwashbhattarai999/NextStarter"
 ```
 
 2. Install dependencies using pnpm:
