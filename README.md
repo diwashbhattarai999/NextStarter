@@ -11,19 +11,33 @@
 
 Kickstart your Next.js projects with this template featuring authentication using NextAuth v5, Tailwind CSS for styling, and the latest Next.js 14. It comes pre-configured with ESLint, Prettier, Commitlint and Husky for a solid development setup. Perfect for modern, secure web applications.
 
-> **Warning**
+> [!WARNING]  
 > This app is a work in progress
 
 ## Features
 
 - Typescript for type-safety
-- Authentication with NextAuth v5
+- Authentication with NextAuth v5 (Auth.js)
 - Tailwind CSS for styling
 - ESLint for code linting
 - Prettier for code formatting
 - Commitlint for commit message linting
 - Husky for pre-commit and commit-msg hooks
-- Internationalization with next-intl (Optional)
+- Prisma ORM with PostgreSQL for database management
+- Uploadthing for file uploads
+- Lucide-react for icons
+- Next-themes for dark and light mode
+- Next-js-toploader for page transitions
+- Resend for sending email
+- Sonner for toasts
+- Zod for validation
+
+## Features to be implemented (Soon):
+
+- [ ] Internationalization with next-intl
+- [ ] Payment Integration with esewa, khalti, stripe (anyone or maybe all)
+- [ ] Framer motion or gsap for animation
+- [ ] Analytics
 
 ## Getting Started
 
