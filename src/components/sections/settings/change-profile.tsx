@@ -2,25 +2,63 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { UseFormSetValue } from "react-hook-form";
-import * as z from "zod";
+import { toast } from "sonner";
+import { ClientUploadedFileData } from "uploadthing/types";
 
-import { SettingsSchema } from "@/schemas";
+import {
+  deletProfileImage,
+  uploadProfileImage,
+} from "@/actions/settings/settings-profile";
+import { useCurrentUser } from "@/hooks/use-current-user";
+
+import { UploadButton } from "@/lib/uploadthing";
 
 import { Button } from "@/components/ui/button";
 
-interface ChangeProfileImgProps {
-  value?: string;
-  setValue?: UseFormSetValue<z.infer<typeof SettingsSchema>>;
-}
+const ChangeProfileImg = () => {
+  const user = useCurrentUser();
 
-const ChangeProfileImg = ({ value, setValue }: ChangeProfileImgProps) => {
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(user?.image ?? "");
 
+  // Delete profile image
   const handleProfileDelete = () => {
-    setImageUrl("");
+    deletProfileImage()
+      .then((data) => {
+        if (data?.error) {
+          toast.error(data.error);
+        }
+        if (data?.success) {
+          setImageUrl("");
+          toast.success(data.success);
+        }
+      })
+      .catch(() => toast.error("Something went wrong"));
+  };
 
-    setValue && setValue("image", "");
+  // Upload profile image
+  const handleImageUpload = (
+    res: ClientUploadedFileData<{
+      uploadedBy: string | undefined;
+    }>[]
+  ) => {
+    {
+      setImageUrl(res[0].url);
+      uploadProfileImage(res[0].url)
+        .then((data) => {
+          if (data?.error) {
+            toast.error(data.error);
+          }
+          if (data?.success) {
+            toast.success("Upload completed.");
+          }
+        })
+        .catch(() => toast.error("Something went wrong"));
+    }
+  };
+
+  // Handle image upload error
+  const handleImageUploadError = (err: Error) => {
+    toast.error(`ERROR! ${err.message}`);
   };
 
   return (
@@ -28,18 +66,23 @@ const ChangeProfileImg = ({ value, setValue }: ChangeProfileImgProps) => {
       <div className="mb-4 text-left flex flex-col items-center gap-4">
         <div className="h-48 w-48 p-1 rounded-full cursor-pointer duration-300 relative">
           <Image
-            src={imageUrl || value || "/images/default-profile.png"}
+            src={imageUrl || "/images/default-profile.png"}
             alt="Profile"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="w-full h-full rounded-full"
+            className="w-full h-full rounded-full aspect-square"
             priority
           />
         </div>
 
         <div className="flex gap-4 items-start">
-          <Button size={"full"}>Upload</Button>
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => handleImageUpload(res)}
+            onUploadError={(err: Error) => handleImageUploadError(err)}
+          />
           <Button
+            type="button"
             variant={"destructive"}
             size={"full"}
             onClick={handleProfileDelete}

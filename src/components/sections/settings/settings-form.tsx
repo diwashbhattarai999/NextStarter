@@ -7,8 +7,8 @@ import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-// import { settings } from "@/actions/settings";
-import { SettingsSchema } from "@/schemas";
+import { settingsProfile } from "@/actions/settings/settings-profile";
+import { SettingsProfileSchema } from "@/schemas";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 import { Button } from "@/components/ui/button";
@@ -20,20 +20,16 @@ import Switch from "@/components/ui/switch";
 import ChangeProfileImg from "@/components/sections/settings/change-profile";
 
 const SettingsForm = () => {
-  // eslint-disable-next-line
   const [error, setError] = useState<string | undefined>();
-  // eslint-disable-next-line
   const [success, setSuccess] = useState<string | undefined>();
   const [isPending, startTransition] = useTransition();
   const [selectValue, setSelectValue] = useState("Select a Role");
 
-  // eslint-disable-next-line
   const { update } = useSession();
 
   const user = useCurrentUser();
 
   const defaultValues = {
-    image: user?.image || undefined,
     name: user?.name || undefined,
     email: user?.email || undefined,
     phone: user?.phoneNumber || undefined,
@@ -54,27 +50,26 @@ const SettingsForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<z.infer<typeof SettingsSchema>>({
-    resolver: zodResolver(SettingsSchema),
+  } = useForm<z.infer<typeof SettingsProfileSchema>>({
+    resolver: zodResolver(SettingsProfileSchema),
     defaultValues: defaultValues,
   });
 
-  const onSubmit = (values: z.infer<typeof SettingsSchema>) => {
+  const onSubmit = (values: z.infer<typeof SettingsProfileSchema>) => {
     startTransition(() => {
-      // settings(values)
-      //   .then((data) => {
-      //     if (data.error) {
-      //       setError(data.error);
-      //       setSuccess("");
-      //     }
-      //     if (data.success) {
-      //       update();
-      //       setSuccess(data.success);
-      //       setError("");
-      //     }
-      //   })
-      //   .catch(() => setError("Something went wrong!"));
-      console.log(values);
+      settingsProfile(values)
+        .then((data) => {
+          if (data.error) {
+            setError(data.error);
+            setSuccess("");
+          }
+          if (data.success) {
+            update();
+            setSuccess(data.success);
+            setError("");
+          }
+        })
+        .catch(() => setError("Something went wrong!"));
     });
   };
 
@@ -175,19 +170,19 @@ const SettingsForm = () => {
               descriptions="Enable two factor authentication for your account"
             />
           )}
+
+          {/* Sucess Message */}
+          {success && <FormSuccess message={success} />}
+
+          {/* Error Message */}
+          {error && <FormError message={error} />}
         </div>
 
-        <ChangeProfileImg setValue={setValue} value={defaultValues.image} />
+        <ChangeProfileImg />
       </div>
 
-      {/* Sucess Message */}
-      {success && <FormSuccess message={success} />}
-
-      {/* Error Message */}
-      {error && <FormError message={error} />}
-
       {/* Submit Button */}
-      <Button disabled={isPending} type="submit" size={"lg"}>
+      <Button disabled={isPending} type="submit" size={"xl"}>
         Save
       </Button>
     </form>

@@ -9,6 +9,7 @@ export const publicRoutes = [
   "/blog",
   "/contact",
   "/new-verification",
+  "/api/uploadthing",
 ];
 
 /**

@@ -1,11 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
 
 import { auth } from "@/auth";
 
 import MaxWidthContainer from "@/components/ui/max-width-container";
 import Navbar from "@/components/sections/navbar/nav";
 import SettingOptions from "@/components/sections/settings/setting-options";
+import { ourFileRouter } from "@/app/api/uploadthing/core";
 
 export default async function SettingsLayout({
   children,
@@ -17,7 +20,13 @@ export default async function SettingsLayout({
 
   return (
     <div className="flex flex-col min-h-screen w-full">
+      {/* UploadThing SSR Plugin: To add SSR hydration and avoid that loading state */}
+      <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+
+      {/* Header */}
       <Navbar />
+
+      {/* Body */}
       <main className="my-8 flex-1">
         <MaxWidthContainer className="max-w-[1350px]">
           <div className="flex flex-col justify-center gap-10">
@@ -60,6 +69,8 @@ export default async function SettingsLayout({
           </div>
         </MaxWidthContainer>
       </main>
+
+      {/* Footer */}
       <div className="border-t border-t-border/70 flex items-center justify-center text-center py-4 text-xs md:text-sm max-sm:flex-col max-sm:gap-2">
         <p>
           Copyright &copy; 2024 Diwash Bhattarai. All Rights Reserved.

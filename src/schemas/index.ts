@@ -79,9 +79,8 @@ export const NewPasswordSchema = z.object({
 });
 
 // Schema for user settings
-export const SettingsSchema = z
+export const SettingsProfileSchema = z
   .object({
-    image: z.optional(z.string()),
     name: z.optional(z.string()),
     isTwoFactorEnabled: z.optional(z.boolean()),
     role: z.enum([UserRole.ADMIN, UserRole.USER, UserRole.SUPER_ADMIN]),
