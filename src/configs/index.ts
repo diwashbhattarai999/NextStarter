@@ -3,8 +3,11 @@ import { Metadata } from "next";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const siteConfig: Metadata = {
-  title:
-    "DB-NextStarter | Your Next.js Boilerplate with Authentication and more...",
+  title: {
+    template: "%s | DB-NextStarter",
+    default:
+      "DB-NextStarter | Your Next.js Boilerplate with Authentication and more...",
+  },
   metadataBase: BASE_URL ? new URL(BASE_URL) : new URL("http://localhost:3000"),
   icons: [
     { rel: "icon", url: "/favicon.png" },
@@ -12,7 +15,7 @@ export const siteConfig: Metadata = {
   ],
 
   alternates: {
-    canonical: "/",
+    canonical: "./",
   },
   authors: [{ name: "Diwash Bhattarai", url: "https://diwashb.com.np" }],
   description:

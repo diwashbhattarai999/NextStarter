@@ -1,5 +1,11 @@
+import { Metadata } from "next";
+
 import DeleteAccountButton from "@/components/sections/settings/delete-account-button";
 import SettingsHeader from "@/components/sections/settings/settings-header";
+
+export const metadata: Metadata = {
+  title: "Delete Account",
+};
 
 const DeleteAccountPage = () => {
   return (

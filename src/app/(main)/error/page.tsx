@@ -1,7 +1,12 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import MaxWidthContainer from "@/components/ui/max-width-container";
+
+export const metadata: Metadata = {
+  title: "Error",
+};
 
 const ErrorPage = () => {
   return (

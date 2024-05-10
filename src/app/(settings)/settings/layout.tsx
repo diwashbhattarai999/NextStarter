@@ -1,4 +1,5 @@
 import React from "react";
+import { Metadata } from "next";
 import Image from "next/image";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
@@ -9,6 +10,14 @@ import MaxWidthContainer from "@/components/ui/max-width-container";
 import Navbar from "@/components/sections/navbar/nav";
 import SettingOptions from "@/components/sections/settings/setting-options";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s - Settings | DB-NextStarter",
+    default:
+      "DB-NextStarter | Your Next.js Boilerplate with Authentication and more...",
+  },
+};
 
 export default async function SettingsLayout({
   children,
