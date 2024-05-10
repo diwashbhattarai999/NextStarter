@@ -31,10 +31,10 @@ Kickstart your Next.js projects with this template featuring authentication usin
 - Resend for sending email
 - Sonner for toasts
 - Zod for validation
+- Internationalization with next-intl ( Unstable )
 
 ## Features to be implemented (Soon):
 
-- [ ] Internationalization with next-intl
 - [ ] Payment Integration with esewa, khalti, stripe (anyone or maybe all)
 - [ ] Framer motion or gsap for animation
 - [ ] Analytics
