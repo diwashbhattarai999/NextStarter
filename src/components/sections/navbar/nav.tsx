@@ -13,11 +13,16 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/ui/logo";
 import MaxWidthContainer from "@/components/ui/max-width-container";
+import LocaleSwitcher from "@/components/locale-switcher";
 import UserProfile from "@/components/sections/navbar/user-profile";
 
 import MobileNav from "./mobile-nav";
 
-const Navbar = () => {
+interface INavbarProps {
+  locale: string;
+}
+
+const Navbar = ({ locale }: INavbarProps) => {
   const pathname = usePathname().split("/")[1];
   const [activeLink, setActiveLink] = useState(`/${pathname}`);
 
@@ -53,7 +58,10 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="max-sm:hidden ml-8">
+          <div className="max-sm:hidden ml-8 flex items-center gap-8">
+            {/* Locale switcher */}
+            <LocaleSwitcher locale={locale} />
+
             {user ? (
               <>
                 {/* Show if user is logged in */}

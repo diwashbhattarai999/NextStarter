@@ -5,6 +5,8 @@
  */
 export const publicRoutes = [
   "/",
+  // "/en",
+  // "/ne",
   "/about",
   "/blog",
   "/contact",
@@ -23,6 +25,16 @@ export const authRoutes = [
   "/error",
   "/reset",
   "/new-password",
+  // "/en/login",
+  // "/ne/login",
+  // "/en/register",
+  // "/ne/register",
+  // "/en/error",
+  // "/ne/error",
+  // "/en/reset",
+  // "/ne/reset",
+  // "/en/new-password",
+  // "/ne/new-password",
 ];
 
 /**

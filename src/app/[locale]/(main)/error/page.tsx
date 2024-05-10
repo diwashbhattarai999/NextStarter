@@ -25,11 +25,11 @@ const ErrorPage = () => {
         {/* Back to home Btn */}
         <Link
           href="/"
-          className="min-w-48 flex items-center justify-center group border border-stone-200 p-4 hover:border-stone-400 transition-colors"
+          className="min-w-48 flex items-center justify-center gap-2 group border border-stone-200 p-4 hover:border-stone-400 transition-colors"
         >
           <span
             aria-hidden="true"
-            className="-mt-[6px] text-2xl group-hover:-translate-x-1 transition-transform"
+            className="-mt-[2px] text-2xl group-hover:-translate-x-1 transition-transform"
           >
             &larr;
           </span>

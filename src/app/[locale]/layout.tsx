@@ -13,6 +13,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import "@/styles/globals.css";
 
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+
 import { auth } from "@/auth";
 
 const nunito = Nunito({
@@ -25,31 +28,38 @@ export const metadata: Metadata = siteConfig;
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+  params: { locale },
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
   const session = await auth();
 
+  // Providing all messages to the client
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
           "antialiased flex flex-col min-h-screen bg-background text-foreground",
           nunito.className
         )}
       >
-        <SessionProvider session={session}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster richColors={true} position="top-center" />
-            <NextTopLoader showSpinner={false} />
-          </ThemeProvider>
-        </SessionProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <SessionProvider session={session}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <Toaster richColors={true} position="top-center" />
+              <NextTopLoader showSpinner={false} />
+            </ThemeProvider>
+          </SessionProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

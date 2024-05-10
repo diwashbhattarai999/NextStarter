@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { getLocale } from "next-intl/server";
 import { extractRouterConfig } from "uploadthing/server";
 
 import { auth } from "@/auth";
@@ -17,6 +18,7 @@ export default async function SettingsLayout({
 }>) {
   const session = await auth();
   const user = session?.user;
+  const locale = await getLocale();
 
   return (
     <div className="flex flex-col min-h-screen w-full">
@@ -24,7 +26,7 @@ export default async function SettingsLayout({
       <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
 
       {/* Header */}
-      <Navbar />
+      <Navbar locale={locale} />
 
       {/* Body */}
       <main className="my-8 flex-1">
