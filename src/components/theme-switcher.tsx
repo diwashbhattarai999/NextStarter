@@ -52,7 +52,7 @@ export default function ThemeSwitcher() {
 
       <ul
         className={cn(
-          "absolute top-0 right-0 flex flex-col rounded-md p-1 bg-primary/5 backdrop-blur-md border border-border duration-300",
+          "absolute top-0 lg:right-0 flex flex-col rounded-md p-1 bg-primary/10 backdrop-blur-md border border-border duration-300",
           isThemeOpen
             ? "opacity-100 translate-y-10 pointer-events-auto"
             : "opacity-0 translate-y-8 pointer-events-none"

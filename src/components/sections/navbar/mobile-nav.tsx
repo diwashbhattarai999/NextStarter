@@ -18,7 +18,7 @@ const MobileNav = () => {
   const handleToggleMenu = () => setShowMenu(!showMenu);
 
   return (
-    <div className="relative w-7 h-7 ml-5 xl:hidden">
+    <div className="relative w-7 h-7 ml-5 lg:hidden z-50">
       {/* Hamburger Icons */}
       {/* Close */}
       <X
