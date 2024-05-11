@@ -72,7 +72,7 @@ const Navbar = () => {
             ) : (
               <>
                 {/* Show if user is not logged in */}
-                <div className="ml-5 xl:ml-20">
+                <div className="ml-5 xl:ml-20 flex items-center gap-2 lg:gap-4">
                   {/* Signin button */}
                   <Link href={"/login"}>
                     <Button
