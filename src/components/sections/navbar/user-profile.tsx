@@ -53,7 +53,7 @@ const UserProfile = () => {
 
       <div
         className={cn(
-          "absolute right-0 z-30 px-2 py-3 rounded-md shadow-md w-56 top-14 bg-background border border-border text-foreground duration-300",
+          "absolute right-0 z-30 px-2 py-3 rounded-md shadow-md min-w-52 w-full top-14 bg-background border border-border text-foreground duration-300",
           isProfileOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-5 pointer-events-none"

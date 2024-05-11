@@ -53,17 +53,26 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="max-sm:hidden ml-8">
+          <div className="max-sm:hidden ml-8 flex items-center gap-2 lg:gap-4">
             {user ? (
               <>
-                {/* Show if user is logged in */}
+                {/* Dashboard */}
+                <Link href={"/dashboard"}>
+                  <Button
+                    variant={"default"}
+                    className="rounded-full hover:rounded-md font-semibold text-base"
+                  >
+                    Dashboard
+                  </Button>
+                </Link>
+
                 {/* User Profile */}
                 <UserProfile />
               </>
             ) : (
               <>
                 {/* Show if user is not logged in */}
-                <div className="ml-5 xl:ml-20 flex items-center gap-2 lg:gap-4">
+                <div className="ml-5 xl:ml-20">
                   {/* Signin button */}
                   <Link href={"/login"}>
                     <Button
