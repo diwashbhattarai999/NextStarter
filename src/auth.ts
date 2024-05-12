@@ -5,10 +5,9 @@ import NextAuth from "next-auth";
 import authConfig from "@/auth.config";
 
 import { getAccountByUserId } from "@/data/account";
+import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
 import { getUserById } from "@/data/user";
 import { db } from "@/lib/db";
-
-import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   // Define custom pages

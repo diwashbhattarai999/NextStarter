@@ -11,12 +11,14 @@ import {
   Text,
 } from "@react-email/components";
 
+import { env } from "@/lib/env";
+
 interface TwoFactorConfirmationEmailProps {
   token?: string;
 }
 
-const baseUrl = process.env.AUTH_TRUST_HOST
-  ? `${process.env.NEXT_PUBLIC_BASE_URL}`
+const baseUrl = env.AUTH_TRUST_HOST
+  ? `${env.NEXT_PUBLIC_BASE_URL}`
   : "https://db-next-starter.vercel.app";
 
 export const TwoFactorConfirmationEmail = ({

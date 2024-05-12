@@ -4,9 +4,11 @@ import VerificationEmail from "@/emails/verification-email";
 import { render } from "@react-email/components";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { env } from "@/lib/env";
 
-const domain = process.env.NEXT_PUBLIC_BASE_URL;
+const resend = new Resend(env.RESEND_API_KEY);
+
+const domain = env.NEXT_PUBLIC_BASE_URL;
 
 // Function to send password reset email
 export const sendPasswordResetEmail = async (email: string, token: string) => {

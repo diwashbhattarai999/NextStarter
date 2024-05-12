@@ -7,16 +7,17 @@ import Google from "next-auth/providers/google";
 import { LoginSchema } from "@/schemas";
 
 import { getUserByEmail } from "@/data/user";
+import { env } from "@/lib/env";
 
 export default {
   providers: [
     Github({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET,
     }),
     Google({
-      clientId: process.env.GOGGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
     Credentials({
       async authorize(credentials) {

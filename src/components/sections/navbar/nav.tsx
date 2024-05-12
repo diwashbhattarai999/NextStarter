@@ -13,9 +13,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/ui/logo";
 import MaxWidthContainer from "@/components/ui/max-width-container";
+import MobileNav from "@/components/sections/navbar/mobile-nav";
 import UserProfile from "@/components/sections/navbar/user-profile";
-
-import MobileNav from "./mobile-nav";
 
 const Navbar = () => {
   const pathname = usePathname().split("/")[1];

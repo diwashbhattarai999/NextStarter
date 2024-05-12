@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { env } from "@/lib/env";
+
+const BASE_URL = env.NEXT_PUBLIC_BASE_URL;
 
 export const siteConfig: Metadata = {
   title: {

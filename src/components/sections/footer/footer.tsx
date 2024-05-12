@@ -4,9 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { FOOTER_CONTACTS, FOOTER_INFOS } from "@/constants";
 
 import MaxWidthContainer from "@/components/ui/max-width-container";
+import FooterInput from "@/components/sections/footer/footer-input";
 import ThemeSwitcher from "@/components/theme-switcher";
-
-import FooterInput from "./footer-input";
 
 const Footer = () => {
   return (
