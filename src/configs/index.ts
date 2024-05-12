@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 const BASE_URL = env.NEXT_PUBLIC_BASE_URL;
 

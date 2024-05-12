@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { PrismaClient } from "@prisma/client";
 
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 declare global {
   var prisma: PrismaClient | undefined;

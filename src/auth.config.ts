@@ -7,7 +7,7 @@ import Google from "next-auth/providers/google";
 import { LoginSchema } from "@/schemas";
 
 import { getUserByEmail } from "@/data/user";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 export default {
   providers: [

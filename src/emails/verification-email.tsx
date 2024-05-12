@@ -12,7 +12,7 @@ import {
   Text,
 } from "@react-email/components";
 
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 interface VerificationEmailProps {
   confirmLink?: string;

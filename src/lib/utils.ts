@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 // Function to merge Tailwind CSS classes with custom classNames
 export function cn(...inputs: ClassValue[]) {
