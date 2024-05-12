@@ -16,25 +16,34 @@ Kickstart your Next.js projects with this template featuring authentication usin
 
 ## Features
 
-- Typescript for type-safety
-- Authentication with NextAuth v5 (Auth.js)
-- Tailwind CSS for styling
-- ESLint for code linting
-- Prettier for code formatting
-- Commitlint for commit message linting
-- Husky for pre-commit and commit-msg hooks
-- Prisma ORM with PostgreSQL for database management
-- Uploadthing for file uploads
-- Lucide-react for icons
-- Next-themes for dark and light mode
-- Next-js-toploader for page transitions
-- Resend for sending email
-- Sonner for toasts
-- Zod for validation
+- 🚀 [Next.js](https://nextjs.org) with App Router
+- ✅ Type checking [TypeScript](https://www.typescriptlang.org)
+- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com)
+- 🔒 Authentication with NextAuth v5 [Auth.js](https://authjs.dev/getting-started/installation?framework=next.js): Sign up, Sign in, Sign out, Forgot password, Reset password, and more.
+- 🔄 Social Auth (Google & GitHub)
+- 💼 Type-safe ORM with [PrismaORM](https://www.prisma.io/) and [PostgreSQL](https://www.postgresql.org/)
+- 📝 Form with [React Hook From](https://react-hook-form.com/get-started)
+- 🔍 Validation library with [Zod](https://zod.dev/)
+- 🧹 Linter with [ESLint](https://eslint.org)
+- 🖌️ Code Formatter with [Prettier](https://prettier.io)
+- 🐶 Husky for Git Hooks
+- 🎯 Lint-staged for running linters on Git staged files
+- 🔍 Lint git commit with Commitlint
+- 🚀 Run tests on pull request with GitHub Actions
+- 📂 Absolute Imports using `@` prefix
+- 🔍 SEO metadata, Sitemap.xml and robots.txt with next-sitemap
+- 📈 Maximize lighthouse score\
+- 🛎️ Sonner for toasts
+- 📤 Uploadthing for file uploads
+- 🎨 Lucide-react for icons
+- 🌗 Next-themes for dark and light mode
+- 🔄 Next-js-toploader for smooth page transitions
+- 📧 Resend for sending email
+- 🌐 Multi-language (i18n) with [next-intl](https://next-intl-docs.vercel.app/) (Unstable)
+
 
 ## Features to be implemented (Soon):
 
-- [ ] Internationalization with next-intl
 - [ ] Payment Integration with esewa, khalti, stripe (anyone or maybe all)
 - [ ] Framer motion or gsap for animation
 - [ ] Analytics
