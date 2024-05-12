@@ -1,7 +1,6 @@
 import * as React from "react";
 import {
   Body,
-  Button,
   Container,
   Head,
   Html,
@@ -12,21 +11,21 @@ import {
   Text,
 } from "@react-email/components";
 
-interface ResetPasswordEmailProps {
-  resetPasswordLink?: string;
+interface TwoFactorConfirmationEmailProps {
+  token?: string;
 }
 
 const baseUrl = process.env.AUTH_TRUST_HOST
   ? `${process.env.NEXT_PUBLIC_BASE_URL}`
   : "https://db-next-starter.vercel.app";
 
-export const ResetPasswordEmail = ({
-  resetPasswordLink,
-}: ResetPasswordEmailProps) => {
+export const TwoFactorConfirmationEmail = ({
+  token,
+}: TwoFactorConfirmationEmailProps) => {
   return (
     <Html>
       <Head />
-      <Preview>Reset your password</Preview>
+      <Preview>Two-Factor Authentication Code</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img
@@ -38,24 +37,15 @@ export const ResetPasswordEmail = ({
           <Section>
             <Text style={text}>Hey there,</Text>
             <Text style={text}>
-              We recently received a request to reset a password for your
-              account. If this was you, you can set a new password here:
+              You&apos;ve requested a verification code to enable two-factor
+              authentication (2FA) for your account.Here is your verification
+              code:
             </Text>
-            <Button style={button} href={resetPasswordLink}>
-              Reset password
-            </Button>
+            <Text style={tokenText}>{token}</Text>
 
             <Text style={text}>
-              If the button above doesn&apos;t work, you can copy and paste the
-              following link into your browser:{" "}
-              <Link style={anchor} href={resetPasswordLink}>
-                {resetPasswordLink}
-              </Link>
-            </Text>
-
-            <Text style={text}>
-              If you don&apos;t want to change your password or didn&apos;t
-              request this, just ignore and delete this message.
+              If you did not sign up for a your account or didn&apos;t request
+              this, just ignore and delete this message.
             </Text>
 
             <Text style={text}>
@@ -72,11 +62,11 @@ export const ResetPasswordEmail = ({
   );
 };
 
-ResetPasswordEmail.PreviewProps = {
-  resetPasswordLink: "https://db-nextstarter.vercel.app",
-} as ResetPasswordEmailProps;
+TwoFactorConfirmationEmail.PreviewProps = {
+  token: "123456",
+} as TwoFactorConfirmationEmailProps;
 
-export default ResetPasswordEmail;
+export default TwoFactorConfirmationEmail;
 
 const main = {
   backgroundColor: "#f6f9fc",
@@ -98,17 +88,14 @@ const text = {
   lineHeight: "26px",
 };
 
-const button = {
-  backgroundColor: "#007ee6",
-  borderRadius: "4px",
-  color: "#fff",
+const tokenText = {
+  color: "#141414",
   fontFamily: "'Open Sans', 'Helvetica Neue', Arial",
-  fontSize: "15px",
+  fontSize: "32px",
   textDecoration: "none",
   textAlign: "center" as const,
-  display: "block",
-  width: "210px",
-  padding: "14px 7px",
+  fontWeight: "bold",
+  margin: "40px 0",
 };
 
 const anchor = {
